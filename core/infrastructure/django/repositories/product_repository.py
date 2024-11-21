@@ -10,15 +10,16 @@ class DjangoProductRepository(ProductRepository):
     def get_all(self, filters: Optional[ProductFilter] = None) -> List[Product]:
         queryset = ProductModel.objects.all()
         if filters:
-            filters = Q()
+            filter_conditions = Q()  # Use a different variable name
             if filters.category is not None:
-                filters &= Q(category__name__iexact=filters.category)
+                filter_conditions &= Q(category__name__iexact=filters.category)
             if filters.price_min is not None:
-                filters &= Q(price__gte=filters.price_min)
+                filter_conditions &= Q(price__gte=filters.price_min)
             if filters.price_max is not None:
-                filters &= Q(price__lte=filters.price_max)
-            queryset = queryset.filter(filters)
+                filter_conditions &= Q(price__lte=filters.price_max)
+            queryset = queryset.filter(filter_conditions)
         return [self._to_entity(product) for product in queryset]
+    
     def get_by_id(self, product_id: int) -> Optional[Product]:
         try:
             product = ProductModel.objects.get(id=product_id)

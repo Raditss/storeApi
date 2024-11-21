@@ -1,4 +1,3 @@
-# core/management/commands/seed_db.py
 from django.core.management.base import BaseCommand
 from core.infrastructure.django.seeders.database_seeder import DatabaseSeeder
 

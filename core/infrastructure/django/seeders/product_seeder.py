@@ -1,4 +1,3 @@
-# core/infrastructure/django/seeders/product_seeder.py
 import random
 from decimal import Decimal
 from typing import List

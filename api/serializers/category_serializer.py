@@ -7,4 +7,7 @@ class CategorySerializer(serializers.Serializer):
     description = serializers.CharField(allow_null=True, required=False)
 
     def to_dto(self) -> CategoryDTO:
-        return CategoryDTO(**self.validated_data)
+        return CategoryDTO(
+            id=getattr(self.instance, 'id', None),
+            **self.validated_data
+        )

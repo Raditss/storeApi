@@ -9,4 +9,7 @@ class ProductSerializer(serializers.Serializer):
     category_id = serializers.IntegerField()
 
     def to_dto(self) -> ProductDTO:
-        return ProductDTO(**self.validated_data)
+        return ProductDTO(
+            id=getattr(self.instance, 'id', None),
+            **self.validated_data
+       )

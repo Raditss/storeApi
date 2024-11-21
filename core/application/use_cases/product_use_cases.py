@@ -32,17 +32,13 @@ class ProductUseCases:
         self._cache_service.set(self._cache_key, products)
         return products
 
-        products = self._repository.get_all()
-        self._cache_service.set(self._cache_key, products)
-        return products
-
     def get_product(self, product_id: int) -> ProductDTO:
         return self._repository.get_by_id(product_id)
 
     def create_product(self, product_dto: ProductDTO) -> ProductDTO:
         product = self._repository.create(product_dto)
         self._cache_service.delete(self._cache_key)
-        return product
+        # return product
 
     def update_product(self, product_dto: ProductDTO) -> ProductDTO:
         product = self._repository.update(product_dto)
