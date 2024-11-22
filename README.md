@@ -123,7 +123,13 @@ redis-server
 #brew services start redis ( with brew)
 ```
 
-🏃‍♂️ Running the Application
+## 🏃‍♂️ Running the Application
+1. Start redis server:
+```bash
+redis-server
+#brew services start redis ( with brew)
+```
+1. Start the Django server:
 ```bash
 python manage.py runserver
 #The API will be available at http://localhost:8000/
