@@ -116,6 +116,13 @@ python manage.py migrate
 python manage.py seed_db --products n # n is the number of products to create
 ```
 
+6. Run redis server (optional):
+```bash
+redis-server
+
+#brew services start redis ( with brew)
+```
+
 🏃‍♂️ Running the Application
 ```bash
 python manage.py runserver
